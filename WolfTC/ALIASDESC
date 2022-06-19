@@ -4,6 +4,7 @@ DogFood HealthBonus
 PlateofFood Stimpack
 FirstAidKit Medikit
 Life Soulsphere
+Score ArmorBonus
 
 // Monsters
 ClassicNazi WolfensteinSS

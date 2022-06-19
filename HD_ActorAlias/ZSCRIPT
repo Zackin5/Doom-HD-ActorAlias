@@ -86,18 +86,21 @@ class ActorAliasHandler : EventHandler {
 		if (GetDefaultByType(e.Replacee).bIsMonster && !(e.Replacee is 'HDMobBase'))
 		{
 			TryMapAlias(e);
+			return;
 		}
 		
-		// Replace ammo
-		if (e.Replacee is 'Ammo' && !(e.Replacee is 'HDAmmo'))
+		// Replace items
+		if (e.Replacee is 'Inventory' && !(e.Replacee is 'HDPickup'))
 		{
 			TryMapAlias(e);
+			return;
 		}
 		
 		// Replace Weapons
 		if (e.Replacee is 'Weapon' && !(e.Replacee is 'HDWeapon'))
 		{
 			TryMapAlias(e);
+			return;
 		}
 	}
 }
