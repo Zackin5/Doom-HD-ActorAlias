@@ -1,5 +1,9 @@
 // Items
 WolfClip Clip
+DogFood HealthBonus
+PlateofFood Stimpack
+FirstAidKit Medikit
+Life Soulsphere
 
 // Monsters
 ClassicNazi WolfensteinSS
