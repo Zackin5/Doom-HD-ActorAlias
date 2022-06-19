@@ -1,0 +1,103 @@
+version "4.7.1"
+
+class ActorAliasDef {
+	String Replacee;
+	String Replacement;
+}
+
+class ActorAliasHandler : EventHandler {
+	Array<ActorAliasDef> actorAliases;
+
+	// Borrowed from DoomDynMusic
+	protected int ch(String s) { return s.byteAt(0); }
+	protected int cis_wspace(int c)
+	{
+		return c == ch("\t") || c == ch(" ") || c == ch("\v") || c == ch("\r") || c == ch("\n");
+	}
+	
+	void LoadAliases() {
+		// Loop through all aliasdesc lumps?
+		for (int li = Wads.FindLump("ALIASDESC", 0, Wads.ANYNAMESPACE);
+			li != -1;
+			li = Wads.FindLump("ALIASDESC", li+1, Wads.ANYNAMESPACE))
+			{
+				// Read out ALIASDESC into a array of lines
+				String aliasLump = Wads.ReadLump(li);
+				Array<String> aliasLines;
+				aliasLump.Split(aliasLines, "\n");
+				
+				// Parse each line into a new alias
+				for(int i = 0; i < aliasLines.Size(); i++)
+				{
+					// console.printf("is %s", aliasLines[i]);
+					if(aliasLines[i].Left(2) == '//')
+						continue;	// Skip comment lines
+					
+					Array<String> parsedAlias;
+					aliasLines[i].Split(parsedAlias, ' ');
+					
+					if (parsedAlias.Size() < 2)
+						continue;
+					
+					// Parse and push new ActorAliasDef
+					let newAlias = new ('ActorAliasDef');
+					
+					// Copy Replacee string (ignoring whitespace)
+					for(int ci = 0; ci < parsedAlias[0].Length(); ci++)
+					{
+						let c = parsedAlias[0].ByteAt(ci);
+						if(!cis_wspace(c))
+							newAlias.Replacee.appendCharacter(c);
+					}
+					
+					// Copy Replacement string (ignoring whitespace)
+					for(int ci = 0; ci < parsedAlias[1].Length(); ci++)
+					{
+						let c = parsedAlias[1].ByteAt(ci);
+						if(!cis_wspace(c))
+							newAlias.Replacement.appendCharacter(c);
+					}
+					
+					actorAliases.push(newAlias);
+					// console.printf("'%s' '%s'", newAlias.Replacee, newAlias.Replacement);
+				}
+			}
+		
+	}
+	
+	void TryMapAlias(ReplaceEvent e) {
+		for (int i = 0; i < actorAliases.Size(); i++)
+		{
+			let iAlias = actorAliases[i];
+			if (e.Replacee is iAlias.Replacee)
+			{
+				e.Replacement = iAlias.Replacement;
+				break;
+			}
+		}
+	}
+	
+	override void OnRegister() {
+		LoadAliases();
+	}
+
+	override void CheckReplacement (ReplaceEvent e) {
+		// Replace monster
+		if (GetDefaultByType(e.Replacee).bIsMonster && !(e.Replacee is 'HDMobBase'))
+		{
+			TryMapAlias(e);
+		}
+		
+		// Replace ammo
+		if (e.Replacee is 'Ammo' && !(e.Replacee is 'HDAmmo'))
+		{
+			TryMapAlias(e);
+		}
+		
+		// Replace Weapons
+		if (e.Replacee is 'Weapon' && !(e.Replacee is 'HDWeapon'))
+		{
+			TryMapAlias(e);
+		}
+	}
+}
