@@ -1,0 +1,47 @@
+// Items
+AmmoSuply Backpack
+BasicArmorbonus HelmFrag
+Cross HDInvRandomSpawner
+ScoreItem HDInvRandomSpawner
+HealthPlus BlueFrag
+ArmorShard HelmFrag
+Stimpack2 PortableStimpack
+Medikit2 PortableMedikit
+MegaMedikit BlueSphere
+LightArmor GarrisonArmour
+HeavyArmor BattleArmour
+
+// Ammo
+WolfClip ClipMagPickup
+MauserClip ClipMagPickup
+M1CLIP ClipMagPickup
+PPSHAmmo ClipMagPickup
+GAS CellRandom
+LaserAmmo CellRandom
+PANZERAmmo RocketBoxRandom
+TGAMMO ShellRandom
+
+// Monsters
+Nazi HoopBubble
+ShotgunGuy1 HideousJackbootReplacer
+Zombie_Man ZombieHideousTrooper
+
+// Weapons
+Colt HDRevolver
+Luger Pistol
+Karabine98 BossRifle
+SecretWeapon_MP40 HDSMG
+MP40Spawner HDSMG
+Thompson HDSMG
+PPSH41 HDSMG
+RifleLaser ThunderBuster
+MG42 Vulcanette
+BWGatling Vulcanette
+Flamethrower_BW BFG9K
+BWBar ZM66AssaultRifle
+STG44 ZM66AssaultRifle
+NaziGrenade HDFragGrenadeAmmo
+M1GARAND LiberatorRifle
+Gnomo Lumberjack
+PanzerShreck HDRL
+TRGUN Hunter
