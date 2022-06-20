@@ -5,26 +5,31 @@ Cross HDInvRandomSpawner
 ScoreItem HDInvRandomSpawner
 HealthPlus BlueFrag
 ArmorShard HelmFrag
-Stimpack2 PortableStimpack
-Medikit2 PortableMedikit
+Stimpack2 PortableHealingItem
+Medikit2 PortableHealingItemBig
 MegaMedikit BlueSphere
 LightArmor GarrisonArmour
 HeavyArmor BattleArmour
 
+// Props
+ExplosiveBarrel1 HDBarrel
+
 // Ammo
 WolfClip ClipMagPickup
 MauserClip ClipMagPickup
+KarClip ClipMagPickup
 M1CLIP ClipMagPickup
 PPSHAmmo ClipMagPickup
 GAS CellRandom
 LaserAmmo CellRandom
 PANZERAmmo RocketBoxRandom
-TGAMMO ShellRandom
+TGAMMO ShellBoxRandom
+Mgammo ClipBoxPickup
 
 // Monsters
-Nazi HoopBubble
-ShotgunGuy1 HideousJackbootReplacer
-Zombie_Man ZombieHideousTrooper
+//Nazi HoopBubble
+//ShotgunGuy1 HideousJackbootReplacer
+//Zombie_Man ZombieHideousTrooper
 
 // Weapons
 Colt HDRevolver
